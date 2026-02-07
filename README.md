@@ -1,2 +1,2 @@
 # anime-social
-Rede Social para postagem de desenhos de anime
+Portfólio pessoal para apresentar serviços de desenvolvimento freelancer.

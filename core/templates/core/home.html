@@ -1,7 +1,148 @@
 {% extends 'base.html' %}
-{% block title %}Página Inicial | AnimeSocial{% endblock %}
+{% block title %}Portfólio | Dev Freelancer{% endblock %}
 
 {% block content %}
-  <h1>Bem-vindo(a), <a href="{% url 'perfil' request.user.username %}">{{ request.user.username }}</a>!</h1>
-  <p>Você está logado no AnimeSocial.</p>
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-label">Disponível para novos projetos</span>
+    <h1>Olá, eu sou <strong>Seu Nome</strong> 👋</h1>
+    <p>Desenvolvedor freelancer focado em criar produtos digitais rápidos, acessíveis e prontos para crescer. Transformo ideias em soluções web completas — do design à entrega.</p>
+    <div class="hero-actions">
+      <a href="#contato" class="btn-primary">Solicitar orçamento</a>
+      <a href="#projetos" class="btn-secondary">Ver projetos</a>
+    </div>
+    <div class="hero-highlights">
+      <div>
+        <strong>+30</strong>
+        <span>Projetos entregues</span>
+      </div>
+      <div>
+        <strong>+12</strong>
+        <span>Clientes recorrentes</span>
+      </div>
+      <div>
+        <strong>4 anos</strong>
+        <span>Experiência</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-card">
+    <h2>Stack principal</h2>
+    <ul>
+      <li>React, Next.js e Tailwind</li>
+      <li>Django, REST APIs e PostgreSQL</li>
+      <li>Deploy em Vercel, Render e AWS</li>
+      <li>Observabilidade com Sentry</li>
+    </ul>
+    <div class="hero-card-footer">
+      <span>🎯 Foco em performance e conversão</span>
+    </div>
+  </div>
+</section>
+
+<section id="sobre" class="about">
+  <div>
+    <h2>Sobre mim</h2>
+    <p>Sou um dev freelancer que ama transformar processos manuais em experiências digitais bem pensadas. Trabalho com startups e negócios locais para criar plataformas escaláveis, dashboards e apps web.</p>
+    <p>Meu diferencial está na combinação de UX, qualidade de código e entrega rápida. Cada projeto é planejado com metas claras, cronograma e comunicação transparente.</p>
+  </div>
+  <div class="about-metrics">
+    <div class="metric-card">
+      <h3>Especialidades</h3>
+      <p>Landing pages, SaaS, sistemas internos, e-commerces, automações e integrações.</p>
+    </div>
+    <div class="metric-card">
+      <h3>Metodologia</h3>
+      <p>Discovery rápido, prototipação, sprints curtas e entrega contínua.</p>
+    </div>
+  </div>
+</section>
+
+<section id="servicos" class="services">
+  <h2>Serviços</h2>
+  <div class="service-grid">
+    <article class="service-card">
+      <h3>Sites e Landing Pages</h3>
+      <p>Experiências focadas em conversão, SEO e performance.</p>
+    </article>
+    <article class="service-card">
+      <h3>Produtos Web</h3>
+      <p>MVPs e plataformas completas com autenticação e dashboards.</p>
+    </article>
+    <article class="service-card">
+      <h3>Integrações & Automação</h3>
+      <p>Pagamentos, CRMs, ERPs, APIs e processos automatizados.</p>
+    </article>
+    <article class="service-card">
+      <h3>Manutenção contínua</h3>
+      <p>Suporte e evolução contínua para o seu produto crescer com segurança.</p>
+    </article>
+  </div>
+</section>
+
+<section id="projetos" class="projects">
+  <div class="section-header">
+    <h2>Projetos em destaque</h2>
+    <a href="#contato" class="text-link">Quero algo assim →</a>
+  </div>
+  <div class="project-grid">
+    <article class="project-card">
+      <span class="project-tag">SaaS</span>
+      <h3>Painel de métricas para e-commerce</h3>
+      <p>Dashboard com filtros avançados, integrações com API e relatórios em tempo real.</p>
+      <ul>
+        <li>Stack: React + Django</li>
+        <li>Entrega: 6 semanas</li>
+      </ul>
+    </article>
+    <article class="project-card">
+      <span class="project-tag">Marketplace</span>
+      <h3>Plataforma de serviços locais</h3>
+      <p>Busca geolocalizada, pagamento integrado e área administrativa completa.</p>
+      <ul>
+        <li>Stack: Next.js + Node</li>
+        <li>Entrega: 8 semanas</li>
+      </ul>
+    </article>
+    <article class="project-card">
+      <span class="project-tag">Landing Page</span>
+      <h3>Campanha de lançamento de produto</h3>
+      <p>Landing page com alta conversão, copy otimizada e integração com CRM.</p>
+      <ul>
+        <li>Stack: Astro + Tailwind</li>
+        <li>Entrega: 2 semanas</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="depoimentos" class="testimonials">
+  <h2>Depoimentos</h2>
+  <div class="testimonial-grid">
+    <figure>
+      <blockquote>“Entrega rápida e comunicação impecável. O produto final superou nossas expectativas.”</blockquote>
+      <figcaption>— Ana P., Startup Fintech</figcaption>
+    </figure>
+    <figure>
+      <blockquote>“Transformou nosso processo manual em uma plataforma confiável e escalável.”</blockquote>
+      <figcaption>— Marcos L., Agência Criativa</figcaption>
+    </figure>
+    <figure>
+      <blockquote>“Código limpo, performance excelente e suporte contínuo.”</blockquote>
+      <figcaption>— Camila R., E-commerce</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="contato" class="contact">
+  <div class="contact-card">
+    <h2>Vamos construir seu próximo projeto?</h2>
+    <p>Conte seu objetivo e receba uma proposta em até 48h.</p>
+    <div class="contact-actions">
+      <a href="mailto:seuemail@dominio.com" class="btn-primary">Enviar e-mail</a>
+      <a href="https://wa.me/5500000000000" class="btn-secondary">WhatsApp</a>
+    </div>
+    <p class="contact-note">Ou me acompanhe no <a href="#">LinkedIn</a> e <a href="#">GitHub</a>.</p>
+  </div>
+</section>
 {% endblock %}

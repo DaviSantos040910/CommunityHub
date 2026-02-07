@@ -50,7 +50,6 @@ def cadastro_view(request):
     return render(request, 'core/cadastro.html')
 
 
-@login_required
 def home_view(request):
     return render(request, 'core/home.html')
 

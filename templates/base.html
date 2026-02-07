@@ -3,28 +3,44 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>{% block title %}AnimeSocial{% endblock %}</title>
+  <title>{% block title %}Portfólio{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
    <script src="https://unpkg.com/lucide@latest"></script>
   {% block extra_head %}{% endblock %}
 </head>
-<body>
- <div class="sidebar" id="sidebar">
-  <div class="sidebar-header">
-    <a href="{% url 'home' %}" class="logo">
-      <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-pin" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16.24 7.76a6 6 0 0 1 0 8.48L12 20.49l-4.24-4.25a6 6 0 1 1 8.48-8.48z"/><line x1="12" x2="12" y1="20.49" y2="22"/></svg>
-    </a>
-  </div>
-  <ul class="sidebar-menu">
-    <li><a href="{% url 'home' %}" title="Home"><i data-lucide="home"></i></a></li>
-    <li><a href="{% url 'perfil' request.user.username %}" title="Perfil"><i data-lucide="user"></i></a></li>
-    <li><a href="{% url 'buscar' %}" title="Buscar"><i data-lucide="search"></i></a></li>
-    <li><a href="{% url 'nova_postagem' %}" title="Nova Postagem"><i data-lucide="plus-square"></i></a></li>
-    <li><a href="{% url 'logout' %}" title="Sair"><i data-lucide="log-out"></i></a></li>
-  </ul>
-</div>
+<body class="{% if request.user.is_authenticated %}app-body{% else %}portfolio-body{% endif %}">
+  {% if request.user.is_authenticated %}
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="{% url 'home' %}" class="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-pin" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16.24 7.76a6 6 0 0 1 0 8.48L12 20.49l-4.24-4.25a6 6 0 1 1 8.48-8.48z"/><line x1="12" x2="12" y1="20.49" y2="22"/></svg>
+        </a>
+      </div>
+      <ul class="sidebar-menu">
+        <li><a href="{% url 'home' %}" title="Home"><i data-lucide="home"></i></a></li>
+        <li><a href="{% url 'perfil' request.user.username %}" title="Perfil"><i data-lucide="user"></i></a></li>
+        <li><a href="{% url 'buscar' %}" title="Buscar"><i data-lucide="search"></i></a></li>
+        <li><a href="{% url 'nova_postagem' %}" title="Nova Postagem"><i data-lucide="plus-square"></i></a></li>
+        <li><a href="{% url 'logout' %}" title="Sair"><i data-lucide="log-out"></i></a></li>
+      </ul>
+    </div>
+  {% else %}
+    <header class="portfolio-header">
+      <div class="portfolio-logo">
+        <span class="portfolio-badge">Dev Freelancer</span>
+        <strong>Seu Nome</strong>
+      </div>
+      <nav class="portfolio-nav">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato" class="nav-cta">Fale comigo</a>
+      </nav>
+    </header>
+  {% endif %}
 
   <main>
     {% block content %}{% endblock %}
