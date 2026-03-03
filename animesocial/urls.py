@@ -9,5 +9,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
+# Em desenvolvimento local, servir arquivos de mídia localmente
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

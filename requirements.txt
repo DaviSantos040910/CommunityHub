@@ -1,0 +1,11 @@
+Django>=5.2,<6.0
+gunicorn>=22.0
+whitenoise>=6.5
+dj-database-url>=2.1
+psycopg2-binary>=2.9
+cloudinary>=1.36
+django-cloudinary-storage>=0.3.0
+django-allauth>=0.57
+Pillow>=10.0
+PyJWT>=2.11.0
+cryptography>=44.0.0

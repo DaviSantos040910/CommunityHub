@@ -7,16 +7,16 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import UserForm, ProfileForm
 from .models import Profile
 from django.db.models import Q
-from .models import Post 
-from django.http import JsonResponse
 from .models import Post
+from django.http import JsonResponse
+import cloudinary.uploader
 
 
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        
+
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
@@ -24,7 +24,7 @@ def login_view(request):
             return redirect('home')
         else:
             return render(request, 'core/login.html', {'error': 'Usuário ou senha incorretos'})
-    
+
     return render(request, 'core/login.html')
 
 
@@ -80,12 +80,16 @@ def editar_perfil_view(request):
 
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
-            
+
             # Verifica se o usuário marcou para remover o avatar
             if request.POST.get('remover_avatar') == 'true':
                 if profile.avatar:
-                    profile.avatar.delete(save=False)  # Deleta o arquivo do sistema
-                profile.avatar = None  # Limpa o campo do modelo
+                    # Destrói a imagem no Cloudinary usando o public_id
+                    try:
+                        cloudinary.uploader.destroy(profile.avatar.public_id)
+                    except Exception:
+                        pass  # Se falhar a remoção remota, continua
+                    profile.avatar = None
 
             profile_form.save()
             messages.success(request, 'Perfil atualizado com sucesso!')
@@ -134,7 +138,6 @@ def nova_postagem(request):
 
     return render(request, 'core/nova_postagem.html')
 
-from django.http import JsonResponse
 
 @login_required
 def curtir_post(request):
@@ -165,9 +168,9 @@ def buscar_ajax(request):
             'id': p.id,
             'titulo': p.titulo,
             'descricao': p.descricao[:80],
-            'imagem': p.imagem.url,
+            'imagem': p.imagem.url if p.imagem else '',
             'usuario': p.usuario.username,
-            'total_curtidas': p.total_curtidas,
+            'total_curtidas': p.total_curtidas(),
         } for p in posts
     ]
 
