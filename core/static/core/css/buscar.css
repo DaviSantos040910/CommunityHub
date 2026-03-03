@@ -1,24 +1,45 @@
+/* ============================================================
+   Buscar — Dark Premium
+   ============================================================ */
+
 .search-container {
-  background-color: white;
-  padding: 1rem;
-  border-radius: 12px;
-  max-width: 700px;
-  margin: auto;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  max-width: 650px;
+  margin: 0 auto;
+  animation: slideUp 0.4s ease-out;
 }
 
 #campoBusca {
   width: 100%;
-  padding: 0.8rem;
+  padding: 0.9rem 1.2rem;
   font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  margin-bottom: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
 
+#campoBusca:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(232, 67, 147, 0.15);
+}
+
+#campoBusca::placeholder {
+  color: var(--text-muted);
+}
+
+/* ===== Results ===== */
 #resultadosBusca h3 {
-  margin-top: 1.5rem;
-  color: #ff4081;
+  margin-top: 1rem;
+  margin-bottom: 0.7rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
 }
 
 #resultadosBusca ul {
@@ -27,27 +48,112 @@
 }
 
 #resultadosBusca ul li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
+#resultadosBusca ul li a {
+  display: block;
+  padding: 0.6rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  transition: all var(--transition);
+}
+
+#resultadosBusca ul li a:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+/* ===== Post Results ===== */
 .post-resultados {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
 .postagem-item {
   display: flex;
   gap: 1rem;
-  background: #fff0f5;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   padding: 0.8rem;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   align-items: center;
+  transition: all var(--transition);
+}
+
+.postagem-item:hover {
+  border-color: rgba(232, 67, 147, 0.2);
+  background: var(--bg-card-hover);
 }
 
 .postagem-item img {
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
+  min-width: 72px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
+}
+
+.postagem-item div {
+  overflow: hidden;
+}
+
+.postagem-item h4 {
+  margin: 0 0 4px 0;
+  word-break: break-word;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.postagem-item p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  word-break: break-word;
+}
+
+.postagem-item small {
+  color: var(--text-muted);
+}
+
+/* ===== No results ===== */
+#resultadosBusca>p {
+  color: var(--text-muted);
+  text-align: center;
+  padding: 2rem;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 768px) {
+  .search-container {
+    margin: 0;
+  }
+
+  .postagem-item {
+    gap: 0.7rem;
+    padding: 0.7rem;
+  }
+
+  .postagem-item img {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

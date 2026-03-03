@@ -12,6 +12,11 @@ from django.http import JsonResponse
 import cloudinary.uploader
 
 
+def landing_view(request):
+    """Página de apresentação pública (landing page do portfólio)."""
+    return render(request, 'core/landing.html')
+
+
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']

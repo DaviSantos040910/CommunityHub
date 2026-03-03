@@ -17,10 +17,11 @@ body {
 .avatar {
   width: 120px;
   height: 120px;
+  min-width: 120px;
   border-radius: 50%;
   background-color: #eee;
   margin-right: 2rem;
-  overflow: hidden; /* ajuda a manter a imagem dentro do círculo */
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,11 +35,13 @@ body {
 .profile-info h1 {
   font-size: 28px;
   margin-bottom: 0.5rem;
+  word-break: break-word;
 }
 
 .profile-info p {
   color: #666;
   margin: 2px 0;
+  word-break: break-word;
 }
 
 .post-gallery {
@@ -76,6 +79,7 @@ body {
   margin: 0 0 0.5rem;
   font-size: 16px;
   color: #333;
+  word-break: break-word;
 }
 
 .post-content p {
@@ -106,35 +110,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .profile-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .avatar {
-    margin-right: 0;
-    margin-bottom: 1rem;
-  }
-
-  .post-gallery {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    padding: 1rem;
-  }
-}
-
-/* Animações */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 .editar-perfil-btn {
   display: inline-flex;
   align-items: center;
@@ -152,10 +127,113 @@ body {
 
 .editar-perfil-btn:hover {
   background-color: #e73370;
+  text-decoration: none;
 }
 
 .editar-perfil-btn svg {
   width: 18px;
   height: 18px;
   stroke-width: 2;
+}
+
+/* Curtir */
+.curtir-form {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.curtir-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0;
+  width: auto;
+}
+
+.contador-curtidas {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ===== Responsivo Mobile ===== */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem 1rem;
+  }
+
+  .avatar {
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .profile-info h1 {
+    font-size: 22px;
+  }
+
+  .post-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    padding: 1rem;
+    gap: 0.8rem;
+  }
+
+  .post-img {
+    height: 160px;
+  }
+
+  .post-content {
+    padding: 0.8rem;
+  }
+
+  .post-content h3 {
+    font-size: 14px;
+  }
+
+  .post-content p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .post-gallery {
+    grid-template-columns: 1fr;
+    padding: 0.8rem;
+  }
+
+  .post-img {
+    height: 200px;
+  }
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

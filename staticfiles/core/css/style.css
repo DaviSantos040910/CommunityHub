@@ -1,26 +1,30 @@
-/* Estilo base */
+/* ===== Reset e Estilo Base ===== */
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Rubik', 'Segoe UI', sans-serif;
   background: linear-gradient(to right, #f5f5f5, #ffe0f0);
   margin: 0;
   padding: 0;
   display: flex;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
 }
 
-/* Container central (para login/cadastro) */
+/* ===== Container de Login/Cadastro ===== */
 .login-container {
   background-color: white;
-  padding: 30px;
+  padding: 30px 24px;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 300px;
+  width: 90%;
+  max-width: 360px;
   margin: auto;
 }
 
-/* Inputs e botões */
+/* ===== Inputs e Botões Globais ===== */
 input {
   width: 100%;
   padding: 10px;
@@ -28,6 +32,7 @@ input {
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 1rem;
+  box-sizing: border-box;
 }
 
 button {
@@ -39,13 +44,14 @@ button {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-size: 1rem;
 }
 
 button:hover {
   background-color: #e91e63;
 }
 
-/* ==== Novo Estilo de Sidebar (Estilo Pinterest) ==== */
+/* ===== Sidebar (Desktop) ===== */
 .sidebar {
   position: fixed;
   top: 0;
@@ -101,27 +107,9 @@ button:hover {
   height: 24px;
 }
 
+/* ===== Conteúdo Principal ===== */
 main {
   margin-left: 72px;
-  padding: 2rem;
-}
-
-
-
-
-/* Conteúdo deslocado */
-main {
-  margin-left: 72px;
-  padding: 2rem;
-  transition: margin-left 0.3s ease;
-}
-
-
-
-
-/* ===== Conteúdo da Página ===== */
-main {
-  margin-left: 250px;
   padding: 2rem;
   height: 100vh;
   overflow-y: auto;
@@ -133,6 +121,7 @@ main h1 {
   color: #ff4081;
 }
 
+/* ===== Links Globais ===== */
 a {
   color: #ff4081;
   text-decoration: none;
@@ -142,12 +131,103 @@ a:hover {
   text-decoration: underline;
 }
 
+/* ===== Formulário de Nova Postagem ===== */
+.form-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
 
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
 
-/* Responsivo */
+.form-container .form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-container label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.form-container .btn-save {
+  display: block;
+  width: 100%;
+  padding: 0.9rem;
+  background-color: #ff4d6d;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.form-container .btn-save:hover {
+  background-color: #e64560;
+}
+
+/* ============================================================
+   RESPONSIVO — MOBILE (max-width: 768px)
+   A sidebar vira uma barra de navegação inferior,
+   estilo Instagram/Pinterest.
+   ============================================================ */
 @media (max-width: 768px) {
+
+  /* Sidebar vira barra inferior */
   .sidebar {
-    width: 60px;
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    border-right: none;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Esconde o logo na barra inferior */
+  .sidebar-header {
+    display: none;
+  }
+
+  /* Menu horizontal */
+  .sidebar-menu {
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sidebar-menu li {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sidebar-menu a {
+    padding: 0.6rem 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sidebar-menu a:hover {
+    border-left: none;
+    border-top: 3px solid #ff4081;
   }
 
   .sidebar-menu i svg {
@@ -155,7 +235,38 @@ a:hover {
     height: 22px;
   }
 
+  /* Conteúdo principal ocupa tela inteira com padding inferior */
   main {
-    margin-left: 60px;
+    margin-left: 0;
+    padding: 1rem 1rem 80px 1rem;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  /* Login / Cadastro */
+  body {
+    flex-direction: column;
+  }
+
+  .login-container {
+    width: 92%;
+    padding: 24px 20px;
+  }
+
+  /* Formulário de nova postagem */
+  .form-container {
+    margin: 1rem;
+    padding: 1.2rem;
+  }
+}
+
+/* ===== Telas muito pequenas (< 400px) ===== */
+@media (max-width: 400px) {
+  .login-container {
+    padding: 20px 16px;
+  }
+
+  main {
+    padding: 0.8rem 0.8rem 80px 0.8rem;
   }
 }

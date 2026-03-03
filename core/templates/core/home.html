@@ -2,6 +2,16 @@
 {% block title %}Página Inicial | AnimeSocial{% endblock %}
 
 {% block content %}
-  <h1>Bem-vindo(a), <a href="{% url 'perfil' request.user.username %}">{{ request.user.username }}</a>!</h1>
-  <p>Você está logado no AnimeSocial.</p>
+<div class="home-container">
+  <div class="home-welcome">
+    <span class="welcome-emoji">🎨</span>
+    <h1>Olá, <a href="{% url 'perfil' request.user.username %}">{{ request.user.username }}</a>!</h1>
+    <p>O que você quer fazer hoje?</p>
+    <div class="home-actions">
+      <a href="{% url 'nova_postagem' %}" class="btn-action-primary">✨ Nova Postagem</a>
+      <a href="{% url 'buscar' %}" class="btn-action-secondary">🔍 Explorar</a>
+      <a href="{% url 'perfil' request.user.username %}" class="btn-action-secondary">👤 Meu Perfil</a>
+    </div>
+  </div>
+</div>
 {% endblock %}

@@ -8,7 +8,7 @@ body {
 
 .edit-profile-container {
   max-width: 600px;
-  margin: 3rem auto;
+  margin: 2rem auto;
   background: white;
   padding: 2rem;
   border-radius: 1rem;
@@ -42,6 +42,7 @@ body {
   border-radius: 0.5rem;
   font-size: 1rem;
   background: #fdfdfd;
+  box-sizing: border-box;
 }
 
 .edit-form textarea {
@@ -79,6 +80,8 @@ body {
 .back-link:hover {
   text-decoration: underline;
 }
+
+/* Mensagens */
 .messages {
   margin-bottom: 1rem;
 }
@@ -103,6 +106,8 @@ body {
   color: #721c24;
   border-left: 4px solid #dc3545;
 }
+
+/* Avatar preview */
 .avatar-preview {
   display: block;
   width: 120px;
@@ -112,11 +117,11 @@ body {
   margin-top: 10px;
   border: 2px solid #ccc;
 }
+
 .avatar-preview-wrapper {
   position: relative;
   display: inline-block;
 }
-
 
 .remove-avatar-btn {
   display: inline-block;
@@ -128,8 +133,28 @@ body {
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
+  width: auto;
 }
 
 .remove-avatar-btn:hover {
   background-color: #d32f2f;
+}
+
+/* ===== Responsivo Mobile ===== */
+@media (max-width: 768px) {
+  .edit-profile-container {
+    margin: 1rem;
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+  }
+
+  .edit-profile-container h1 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .avatar-preview {
+    width: 90px;
+    height: 90px;
+  }
 }

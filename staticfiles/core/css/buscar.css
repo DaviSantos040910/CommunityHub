@@ -4,7 +4,7 @@
   border-radius: 12px;
   max-width: 700px;
   margin: auto;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 #campoBusca {
@@ -14,6 +14,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   margin-bottom: 1rem;
+  box-sizing: border-box;
 }
 
 #resultadosBusca h3 {
@@ -48,6 +49,43 @@
 .postagem-item img {
   width: 80px;
   height: 80px;
+  min-width: 80px;
   object-fit: cover;
   border-radius: 8px;
+}
+
+.postagem-item div {
+  overflow: hidden;
+}
+
+.postagem-item h4 {
+  margin: 0 0 4px 0;
+  word-break: break-word;
+}
+
+.postagem-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+  word-break: break-word;
+}
+
+/* ===== Responsivo Mobile ===== */
+@media (max-width: 768px) {
+  .search-container {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .postagem-item {
+    gap: 0.6rem;
+    padding: 0.6rem;
+  }
+
+  .postagem-item img {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+  }
 }

@@ -3,18 +3,19 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}AnimeSocial{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   {% block extra_head %}{% endblock %}
 </head>
 <body>
  <div class="sidebar" id="sidebar">
   <div class="sidebar-header">
     <a href="{% url 'home' %}" class="logo">
-      <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-pin" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16.24 7.76a6 6 0 0 1 0 8.48L12 20.49l-4.24-4.25a6 6 0 1 1 8.48-8.48z"/><line x1="12" x2="12" y1="20.49" y2="22"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16.24 7.76a6 6 0 0 1 0 8.48L12 20.49l-4.24-4.25a6 6 0 1 1 8.48-8.48z"/><line x1="12" x2="12" y1="20.49" y2="22"/></svg>
     </a>
   </div>
   <ul class="sidebar-menu">

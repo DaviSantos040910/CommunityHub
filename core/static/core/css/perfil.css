@@ -1,29 +1,38 @@
-body {
-  font-family: 'Rubik', sans-serif;
-  margin: 0;
-  background-color: #f9f9f9;
-  color: #222;
-}
+/* ============================================================
+   Perfil — Dark Premium
+   ============================================================ */
 
 .profile-header {
   display: flex;
   align-items: center;
   padding: 2rem;
-  border-bottom: 1px solid #ddd;
-  background: white;
-  animation: fadeIn 0.6s ease-in;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  margin-bottom: 1.5rem;
+  animation: slideUp 0.5s ease-out;
 }
 
 .avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background-color: #eee;
+  width: 110px;
+  height: 110px;
+  min-width: 110px;
+  border-radius: var(--radius-full);
+  background: var(--bg-input);
   margin-right: 2rem;
-  overflow: hidden; /* ajuda a manter a imagem dentro do círculo */
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 3px solid transparent;
+  background-image: var(--accent-gradient);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  position: relative;
+}
+
+.avatar img {
+  border-radius: var(--radius-full);
 }
 
 .profile-info {
@@ -32,40 +41,76 @@ body {
 }
 
 .profile-info h1 {
-  font-size: 28px;
-  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+  word-break: break-word;
+  color: var(--text-primary);
 }
 
 .profile-info p {
-  color: #666;
+  color: var(--text-secondary);
   margin: 2px 0;
+  font-size: 0.9rem;
+  word-break: break-word;
 }
 
+.editar-perfil-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-gradient);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: 'Rubik', sans-serif;
+  font-size: 0.88rem;
+  margin-top: 10px;
+  transition: all var(--transition);
+}
+
+.editar-perfil-btn:hover {
+  background: var(--accent-gradient-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-glow);
+  text-decoration: none;
+  color: white;
+}
+
+.editar-perfil-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+}
+
+/* ===== Post Gallery ===== */
 .post-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
-  padding: 2rem;
-  animation: fadeInUp 0.6s ease-in;
+  animation: fadeIn 0.6s ease-out;
 }
 
 .post-card {
-  background: white;
-  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all var(--transition);
 }
 
 .post-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(232, 67, 147, 0.2);
 }
 
 .post-img {
   width: 100%;
   height: 220px;
   object-fit: cover;
+  display: block;
 }
 
 .post-content {
@@ -73,89 +118,133 @@ body {
 }
 
 .post-content h3 {
-  margin: 0 0 0.5rem;
-  font-size: 16px;
-  color: #333;
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  word-break: break-word;
+  font-weight: 500;
 }
 
 .post-content p {
-  font-size: 14px;
-  color: #777;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
 }
 
-.back-home {
+.post-content small {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* ===== Curtir ===== */
+.curtir-form {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 2rem;
-  color: #5c6bc0;
-  text-decoration: none;
+  gap: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.curtir-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0;
+  width: auto;
+  margin: 0;
+  transition: transform 0.2s ease;
+}
+
+.curtir-btn:hover {
+  transform: scale(1.2);
+  background: none;
+  box-shadow: none;
+}
+
+.contador-curtidas {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
   font-weight: 500;
-  transition: 0.3s;
 }
 
-.back-home svg {
-  margin-right: 8px;
-  width: 18px;
-  height: 18px;
-  stroke: currentColor;
+/* ===== Empty State ===== */
+.post-gallery p {
+  color: var(--text-muted);
+  text-align: center;
+  grid-column: 1 / -1;
+  padding: 3rem 1rem;
+  font-size: 0.95rem;
 }
 
-.back-home:hover {
-  text-decoration: underline;
-  transform: translateY(-2px);
-}
-
-/* Responsividade */
+/* ===== Responsivo ===== */
 @media (max-width: 768px) {
   .profile-header {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 1.5rem 1rem;
+    border-radius: var(--radius-md);
   }
 
   .avatar {
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
     margin-right: 0;
     margin-bottom: 1rem;
   }
 
+  .profile-info h1 {
+    font-size: 1.25rem;
+  }
+
   .post-gallery {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    padding: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.7rem;
+  }
+
+  .post-img {
+    height: 160px;
+  }
+
+  .post-content {
+    padding: 0.8rem;
+  }
+
+  .post-content h3 {
+    font-size: 0.85rem;
   }
 }
 
-/* Animações */
+@media (max-width: 400px) {
+  .post-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .post-img {
+    height: 200px;
+  }
+}
+
+/* ===== Animations (redefine aqui pra quando perfil.css carrega sozinho) ===== */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+  from {
+    opacity: 0;
+  }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.editar-perfil-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: #ff4081;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 500;
-  font-family: 'Rubik', sans-serif;
-  margin-top: 10px;
-  transition: background-color 0.3s ease;
-}
-
-.editar-perfil-btn:hover {
-  background-color: #e73370;
-}
-
-.editar-perfil-btn svg {
-  width: 18px;
-  height: 18px;
-  stroke-width: 2;
+  to {
+    opacity: 1;
+  }
 }
