@@ -1,6 +1,6 @@
-# 🌸 AnimeSocial
+# 🌐 CommunityHub
 
-**AnimeSocial** é uma rede social focada no compartilhamento amigável e focado de desenhos, ilustrações e fanarts de animes. Os usuários podem criar uma conta, editar seus perfis (incluindo avatares reais armazenados em nuvem), postar suas criações e interagir curtindo as obras de outros artistas da comunidade.
+**CommunityHub** é uma plataforma web multiusuário focada em comunidade, com sistema de autenticação, perfis personalizáveis, feed dinâmico e interações em tempo real. Esta demonstração utiliza temática anime como exemplo de aplicação, mas a arquitetura é adaptável para qualquer tipo de comunidade ou negócio.
 
 ---
 
@@ -15,19 +15,20 @@ Este projeto foi construído utilizando as seguintes tecnologias:
     *   `PostgreSQL` via Render (Ambiente de Produção)
 *   **Armazenamento de Mídia:** **[Cloudinary](https://cloudinary.com/)** (Para armazenamento persistente e seguro de avatares e imagens dos posts)
 *   **Hospedagem & Deploy:** **[Render](https://render.com/)** com `gunicorn` e `Whitenoise` para os arquivos estáticos
-*   **Autenticação:** Sistema robusto nativo do Django + integração de base com `django-allauth`
+*   **Autenticação:** Sistema robusto nativo do Django + integração com `django-allauth` (Google OAuth)
 
 
 ---
 
 ## ✨ Principais Funcionalidades
 
-*   🔐 **Sistema de Autenticação:** Cadastro simplificado e Login.
-*   👤 **Perfis de Usuário Personalizáveis:** Adição de bio e upload de Avatar.
-*   🖼️ **Feed de Postagens:** Interface agradável no padrão "Galeria" para visualização das artes criadas pelos membros.
+*   🔐 **Sistema de Autenticação:** Cadastro simplificado, Login e autenticação social (Google OAuth).
+*   👥 **Sistema Multiusuário:** Cada usuário tem perfil próprio com avatar, bio e galeria de postagens.
+*   🖼️ **Feed de Postagens:** Interface agradável no padrão "Galeria" para visualização do conteúdo criado pelos membros.
 *   ❤️ **Sistema de Curtidas (Em Tempo Real):** Feito de forma assíncrona com JavaScript (AJAX) para curtir posts sem recarregar a página.
 *   🔍 **Busca Inteligente:** Motor de busca integrado com AJAX para encontrar postagens por título e usuários simultaneamente.
-*   ☁️ **Upload de Mídia Moderno:** Sem mais fotos quebradas na nuvem, todas as imagens são enviadas nativamente para os servidores de nuvem do Cloudinary.
+*   ☁️ **Upload de Mídia Moderno:** Todas as imagens são enviadas nativamente para os servidores CDN do Cloudinary.
+*   📱 **Design Responsivo:** Interface adaptável de desktop a mobile, com sidebar que se transforma em barra de navegação inferior.
 
 ---
 
@@ -43,8 +44,8 @@ Siga estas instruções caso queira criar um clone do projeto e rodar tranquilam
 
 Clone o repositório na sua máquina:
 ```bash
-git clone https://github.com/SeuUsuario/anime-social.git
-cd anime-social
+git clone https://github.com/SeuUsuario/CommunityHub.git
+cd CommunityHub
 ```
 
 Ative o ambiente virtual configurado na pasta do projeto:

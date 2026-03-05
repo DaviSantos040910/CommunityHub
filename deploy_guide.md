@@ -1,6 +1,6 @@
-# 🚀 Guia de Deploy — AnimeSocial no Render + Cloudinary
+# 🚀 Guia de Deploy — CommunityHub no Render + Cloudinary
 
-Este guia contém o passo a passo completo para colocar o seu projeto Django "AnimeSocial" no ar utilizando o Render (hospedagem e banco de dados PostgreSQL) e o Cloudinary (para armazenar avatares e imagens de posts).
+Este guia contém o passo a passo completo para colocar o seu projeto Django "CommunityHub" no ar utilizando o Render (hospedagem e banco de dados PostgreSQL) e o Cloudinary (para armazenar avatares e imagens de posts).
 
 ---
 
@@ -33,7 +33,7 @@ O Render reinicia a máquina de tempos em tempos. Se as imagens ficassem salvas 
 
 Tudo que eu fiz precisa ir para o seu repositório no GitHub para que o Render consiga acessar.
 
-Abra o terminal na pasta do seu projeto (`c:\Users\davis\anime-social`) e rode os comandos abaixo exatamente nesta ordem:
+Abra o terminal na pasta do seu projeto (`c:\Users\davis\CommunityHub`) e rode os comandos abaixo exatamente nesta ordem:
 
 ```bash
 git add .
@@ -58,13 +58,13 @@ Como o SQLite que usamos localmente não funciona bem em rede para produção, u
 
 1. No Dashboard (Painel) do Render, clique no botão superior **"New +"** e escolha **"PostgreSQL"**.
 2. Preencha as informações:
-   - **Name**: `animesocial-db`
+   - **Name**: `communityhub-db`
    - **Region**: Escolha a mais próxima (ex: `Oregon (US West)` ou alguma no leste dos EUA).
    - **PostgreSQL Version**: `16` (ou deixe o padrão).
    - **Instance Type**: Escolha o plano `Free`.
 3. Clique em **"Create Database"** no final da página.
 4. Na tela que abrir, role a página para baixo até as informações de conexão e **copie o valor da "Internal Database URL"**. 
-   - *A URL vai ser algo parecido com: `postgres://usuario:senha@host-interno/animesocial_db`*
+   - *A URL vai ser algo parecido com: `postgres://usuario:senha@host-interno/communityhub_db`*
 5. Salve essa URL junto com as chaves do Cloudinary, logo usaremos ela.
 
 ---
@@ -73,14 +73,14 @@ Como o SQLite que usamos localmente não funciona bem em rede para produção, u
 
 1. Volte ao Dashboard inicial do Render.
 2. Clique novamente em **"New +"** e agora escolha **"Web Service"**.
-3. Conecte sua conta do GitHub e selecione o repositório do projeto (o `anime-social`). Se o repositório não aparecer, você pode precisar ajustar as permissões do GitHub para permitir que o Render veja esse repositório específico.
+3. Conecte sua conta do GitHub e selecione o repositório do projeto (o `CommunityHub`). Se o repositório não aparecer, você pode precisar ajustar as permissões do GitHub para permitir que o Render veja esse repositório específico.
 4. Preencha a configuração do serviço:
-   - **Name**: `animesocial` (ou o nome que preferir para url, ex: `animesocial-seu-nome`).
+   - **Name**: `communityhub` (ou o nome que preferir para url, ex: `communityhub-seu-nome`).
    - **Region**: A *mesma* que você escolheu para o banco de dados.
    - **Branch**: `main` (ou master, dependendo do que você está usando).
    - **Runtime**: `Python 3`
    - **Build Command**: `./build.sh`
-   - **Start Command**: `gunicorn animesocial.wsgi:application`
+   - **Start Command**: `gunicorn communityhub.wsgi:application`
    - **Instance Type**: Selecione o plano `Free`.
 
 5. **NÃO CLIQUE AINDA EM CREATE**. Role até a seção "**Environment Variables**" (Variáveis de Ambiente). CLIQUE em "Add Environment Variable" para adicionar as 7 variáveis listadas abaixo. Isto é a parte **mais importante**.
@@ -89,7 +89,7 @@ Como o SQLite que usamos localmente não funciona bem em rede para produção, u
 | :--- | :--- |
 | `PYTHON_VERSION` | `3.13.7` (A versão do python instalada na sua máquina local) |
 | `DATABASE_URL` | A ***Internal Database URL*** que você copiou no Passo 4. |
-| `SECRET_KEY` | Uma senha enorme, como: `chave-segura-animesocial-1548@#$#@134654!!!*&` (Não pode ter espaços). |
+| `SECRET_KEY` | Uma senha enorme, como: `chave-segura-communityhub-1548@#$#@134654!!!*&` (Não pode ter espaços). |
 | `DEBUG` | `False` |
 | `CLOUDINARY_CLOUD_NAME` | O **Cloud Name** do Cloudinary anotado no passo 1. |
 | `CLOUDINARY_API_KEY` | A **API Key** do Cloudinary do passo 1. |
@@ -107,7 +107,7 @@ Isso leva cerca de 3 a 5 minutos. Você pode acompanhar a tela cheia de códigos
 Quando a mensagem aparecer: 
 `[INFO] Listening at: http://0.0.0.0:10000` (Ou algo muito parecido com "Build successful" / "Your service is live").
 
-Aí basta olhar no canto superior esquerdo da tela onde aparece a **URL do seu site** (ex: `https://animesocial-abcd.onrender.com`). Clique nela e seu site estará no ar! 🎉
+Aí basta olhar no canto superior esquerdo da tela onde aparece a **URL do seu site** (ex: `https://communityhub-abcd.onrender.com`). Clique nela e seu site estará no ar! 🎉
 
 ---
 
